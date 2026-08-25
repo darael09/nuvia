@@ -922,35 +922,42 @@ ventanaFoto.addEventListener('click', (e) => {
     }
 });
 </script>
-   <script> 
+   <script>
 document.querySelectorAll('#mainNav .submenu a').forEach(enlace => {
   enlace.addEventListener('click', function(e) {
     e.preventDefault();
     const filtro = this.getAttribute('data-filter');
-    console.log('Filtro elegido:', filtro);
 
     document.querySelectorAll('.prod-card').forEach(producto => {
       const categoria = producto.getAttribute('data-category');
       
-      if (filtro === '*' || filtro === 'todo') {
+      // ✅ VER TODO → muestra todos
+      if (filtro === '*' || filtro === 'todos') {
         producto.style.display = 'block';
       }
-      else if (filtro === 'hombre') {
-        producto.style.display = (categoria === 'hombre') ? 'block' : 'none';
+      // ✅ MAQUILLAJE → solo maquillaje
+      else if (filtro === 'maquillaje') {
+        producto.style.display = (categoria === 'maquillaje') ? 'block' : 'none';
       }
-      else if (filtro === 'mujer') {
-        producto.style.display = (categoria === 'mujer') ? 'block' : 'none';
+      // ✅ PERFUMES → solo perfumes
+      else if (filtro === 'perfumes') {
+        producto.style.display = (categoria === 'perfumes') ? 'block' : 'none';
       }
-      else if (filtro === 'ropa') {
-        producto.style.display = (categoria === 'ropa') ? 'block' : 'none';
+      // ✅ CUIDADO PERSONAL → solo cuidado
+      else if (filtro === 'cuidado') {
+        producto.style.display = (categoria === 'cuidado') ? 'block' : 'none';
       }
+      // ✅ VER TODO ÉSIKA → muestra todos los de Ésika
       else if (filtro === 'esika') {
-        producto.style.display = (categoria === 'esika' || categoria === 'mujer') ? 'block' : 'none';
+        producto.style.display = (categoria === 'maquillaje' || categoria === 'perfumes' || categoria === 'cuidado' || categoria === 'esika') ? 'block' : 'none';
+      }
+      // ✅ ROPA → Hombre / Mujer / Unisex
+      else if (filtro === 'hombre' || filtro === 'mujer' || filtro === 'ropa') {
+        producto.style.display = (categoria === filtro) ? 'block' : 'none';
       }
     });
   });
 });
 </script>
-
 </body>
 </html>
