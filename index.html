@@ -459,7 +459,7 @@
     <li><a href="#" data-filter="hombre"> Para Él</a></li>
     <li><a href="#" data-filter="mujer"> Para Ella</a></li>
     <li><a href="#" data-filter="ropa"> Unisex</a></li>
-    <li><a href="#" data-filter="*">👀 Ver Todo</a></li>
+    <li><a href="#" data-filter="*"> Ver Todo</a></li>
   </ul>
 </li>
 
@@ -922,7 +922,7 @@ ventanaFoto.addEventListener('click', (e) => {
     }
 });
 </script>
-    <script> 
+   <script> 
 document.querySelectorAll('#mainNav .submenu a').forEach(enlace => {
   enlace.addEventListener('click', function(e) {
     e.preventDefault();
@@ -947,8 +947,10 @@ document.querySelectorAll('#mainNav .submenu a').forEach(enlace => {
       else if (filtro === 'esika') {
         producto.style.display = (categoria === 'esika' || categoria === 'mujer') ? 'block' : 'none';
       }
+    });
   });
 });
 </script>
+
 </body>
 </html>
