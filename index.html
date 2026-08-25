@@ -202,6 +202,32 @@
                 position: relative;
             }
         }
+        /* === FILTRO DE PRODUCTOS === */
+        .filter-link {
+            position: relative;
+        }
+        .filter-link.active {
+            color: var(--rosa-intenso);
+            font-weight: 700;
+        }
+        .filter-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--rosa-intenso);
+            border-radius: 2px;
+        }
+        .prod-card {
+            transition: all 0.4s ease;
+        }
+        .prod-card.hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+        }
     </style>
 </head>
 <body>
@@ -230,17 +256,17 @@
         </div>
     </header>
 
-    <nav id=mainNav>
-        <ul>
-            <li><a href="#">INICIO</a></li>
-            <li><a href="#">ÉSIKA</a></li>
-            <li><a href="#">ROPA</a></li>
-            <li><a href="#">NUEVOS INGRESOS</a></li>
-            <li><a href="#">OFERTAS</a></li>
-            <li><a href="#">ACCESORIOS</a></li>
-            <li><a href="#">CONTACTO</a></li>
-        </ul>
-    </nav>
+    <nav id="mainNav">
+    <ul>
+        <li><a href="#" data-filter="todos" class="filter-link active">INICIO</a></li>
+        <li><a href="#" data-filter="esika" class="filter-link">ÉSIKA</a></li>
+        <li><a href="#" data-filter="ropa" class="filter-link">ROPA</a></li>
+        <li><a href="#" data-filter="nuevos" class="filter-link">NUEVOS INGRESOS</a></li>
+        <li><a href="#" data-filter="ofertas" class="filter-link">OFERTAS</a></li>
+        <li><a href="#" data-filter="accesorios" class="filter-link">ACCESORIOS</a></li>
+        <li><a href="#" data-filter="contacto" class="filter-link">CONTACTO</a></li>
+    </ul>
+</nav>
 
     <section class="banner">
         <button class="banner-arrow arrow-left">‹</button>
@@ -297,42 +323,42 @@
             <a href="#" class="ver-todo">Ver todo →</a>
         </div>
         <div class="prod-grid">
-            <div class="prod-card">
+            <div class="prod-card" data-category="esika">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300&h=300&fit=crop" alt="Perfume"></div>
                 <p class="prod-brand">Ésika</p>
                 <h4 class="prod-name">Vibranza Eau de Parfum</h4>
                 <p class="prod-price">S/ 89.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
             </div>
-            <div class="prod-card">
+            <div class="prod-card" data-category="esika">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1583229827307-8a793d85703c?w=300&h=300&fit=crop" alt="Labial"></div>
                 <p class="prod-brand">Ésika</p>
                 <h4 class="prod-name">Labial Hidratante Velvet</h4>
                 <p class="prod-price">S/ 29.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
             </div>
-            <div class="prod-card">
+            <div class="prod-card" data-category="esika">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=300&h=300&fit=crop" alt="Máscara"></div>
                 <p class="prod-brand">Ésika Pro</p>
                 <h4 class="prod-name">Máscara Multibeneficios 5 en 1</h4>
                 <p class="prod-price">S/ 39.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
             </div>
-            <div class="prod-card">
+            <div class="prod-card" data-category="ropa">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop" alt="Polo"></div>
                 <p class="prod-brand">Moda</p>
                 <h4 class="prod-name">Polo Básico Algodón</h4>
                 <p class="prod-price">S/ 39.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
             </div>
-            <div class="prod-card">
+            <div class="prod-card" data-category="ropa">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop" alt="Vestido"></div>
                 <p class="prod-brand">Moda</p>
                 <h4 class="prod-name">Vestido Floral</h4>
                 <p class="prod-price">S/ 79.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
             </div>
-            <div class="prod-card">
+            <div class="prod-card" data-category="ropa">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&h=300&fit=crop" alt="Jeans"></div>
                 <p class="prod-brand">Moda</p>
                 <h4 class="prod-name">Jean Wide Leg</h4>
@@ -462,5 +488,41 @@
         });
     });
 </script>
+ <!-- === FILTRO DE PRODUCTOS === -->
+<script>
+    const filterLinks = document.querySelectorAll('.filter-link');
+    const prodCards = document.querySelectorAll('.prod-card');
+    
+    filterLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Quitar active de todos
+            filterLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            const filtro = link.dataset.filter;
+            
+            // Mostrar u ocultar según categoría
+            prodCards.forEach(card => {
+                const categoria = card.dataset.category;
+                if (filtro === 'todos' || categoria === filtro) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Cerrar menú en celular
+            if (menuToggle && mainNav) {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+            }
+            
+            // Ir suave a la sección de productos
+            document.querySelector('.productos').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>   
 </body>
 </html>
