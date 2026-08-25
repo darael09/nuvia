@@ -235,7 +235,7 @@
     <div class="top-bar">
         <span>🚚 Envíos a todo el Perú</span>
         <span class="top-bar-center">❤️ Envío gratis por compras mayores a S/150</span>
-        <span>💬 Escríbenos 933 123 456</span>
+        <span>💬 Escríbenos 902 734 045</span>
     </div>
 
     <header>
@@ -296,7 +296,7 @@
             <div class="cat-content">
                 <h3>ÉSIKA</h3>
                 <p>Fragancias, maquillaje y cuidado personal</p>
-                <a href="#" class="cat-btn">VER PRODUCTOS →</a>
+                <a href="#" class="cat-btn" data-filter="esika">VER PRODUCTOS →</a>
             </div>
         </div>
         <div class="cat-card ropa">
@@ -304,7 +304,7 @@
             <div class="cat-content">
                 <h3>ROPA</h3>
                 <p>Encuentra tu look ideal para cada ocasión</p>
-                <a href="#" class="cat-btn">VER COLECCIÓN →</a>
+                <a href="#" class="cat-btn" data-filter="ropa">VER COLECCIÓN →</a>
             </div>
         </div>
     </section>
@@ -518,6 +518,35 @@
                 menuToggle.classList.remove('active');
                 mainNav.classList.remove('active');
             }
+            
+            // Ir suave a la sección de productos
+            document.querySelector('.productos').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+    // === CONECTAR BOTONES DE CATEGORÍAS GRANDES ===
+    const catButtons = document.querySelectorAll('.cat-btn');
+    catButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const filtro = btn.dataset.filter;
+            
+            // Activar el filtro correspondiente
+            filterLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.filter === filtro) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Filtrar productos
+            prodCards.forEach(card => {
+                const categoria = card.dataset.category;
+                if (categoria === filtro) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
             
             // Ir suave a la sección de productos
             document.querySelector('.productos').scrollIntoView({ behavior: 'smooth' });
