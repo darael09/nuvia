@@ -329,6 +329,86 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         .hidden { display: none !important; }
+        /* ===== MENÚ DESPLEGABLE INTEGRADO ===== */
+#mainNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+#mainNav li {
+  position: relative;
+}
+
+#mainNav .filter-link {
+  padding: 12px 20px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+#mainNav .has-submenu > a {
+  cursor: pointer;
+}
+
+/* ===== SUBMENU ===== */
+#mainNav .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  margin: 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+#mainNav .has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#mainNav .submenu li a {
+  padding: 12px 20px;
+  display: block;
+  color: #444;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+}
+
+#mainNav .submenu li a:hover {
+  background: #f9f0f4;
+  color: #e91e63;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #mainNav ul {
+    flex-wrap: wrap;
+  }
+  #mainNav .filter-link {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  #mainNav .submenu {
+    left: 0;
+    right: auto;
+  }
+}
     </style>
 </head>
 <body>
@@ -840,6 +920,23 @@ ventanaFoto.addEventListener('click', (e) => {
         ventanaFoto.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
+});
+</script>
+    <script>
+document.querySelectorAll('#mainNav .submenu a').forEach(enlace => {
+  enlace.addEventListener('click', function(e) {
+    e.preventDefault();
+    const filtro = this.getAttribute('data-filter');
+    
+    document.querySelectorAll('.prod-card').forEach(producto => {
+      const categoria = producto.getAttribute('data-category');
+      if (filtro === '*' || categoria === filtro || (filtro === 'esika' && categoria !== 'hombre' && categoria !== 'ropa')) {
+        producto.style.display = 'block';
+      } else {
+        producto.style.display = 'none';
+      }
+    });
+  });
 });
 </script>
 </body>
