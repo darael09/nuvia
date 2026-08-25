@@ -803,5 +803,42 @@
     // Inicializar vista
     updateCartView();
 </script>
+    <!-- VENTANA PARA VER FOTOS GRANDES -->
+<div id="foto-grande" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
+    <button id="cerrar-foto" style="position:absolute; top:20px; right:30px; background:none; border:none; color:white; font-size:35px; cursor:pointer;">×</button>
+    <img id="imagen-ampliada" src="" alt="" style="max-width:85%; max-height:80%; border-radius:12px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
+</div>
+
+<script>
+// Seleccionamos todo
+const ventanaFoto = document.getElementById('foto-grande');
+const imagenAmpliada = document.getElementById('imagen-ampliada');
+const cerrarFoto = document.getElementById('cerrar-foto');
+
+// Hacemos que TODAS las fotos de productos sean cliqueables
+document.querySelectorAll('.prod-img img').forEach(foto => {
+    foto.style.cursor = 'zoom-in'; // Cambia el cursor a lupa
+    foto.addEventListener('click', () => {
+        imagenAmpliada.src = foto.src; // Copia la foto
+        imagenAmpliada.alt = foto.alt; // Copia el nombre
+        ventanaFoto.style.display = 'flex'; // Muestra la ventana
+        document.body.style.overflow = 'hidden'; // Bloquea el fondo
+    });
+});
+
+// Cerrar con la X
+cerrarFoto.addEventListener('click', () => {
+    ventanaFoto.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
+
+// Cerrar al hacer clic fuera de la foto
+ventanaFoto.addEventListener('click', (e) => {
+    if (e.target === ventanaFoto) {
+        ventanaFoto.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+</script>
 </body>
 </html>
