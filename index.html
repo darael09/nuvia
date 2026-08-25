@@ -6,79 +6,98 @@
     <title>NUVIA - Belleza que te inspira, estilo que te define</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        :root { --rosa-suave: #FDE2E4; --rosa-intenso: #E94057; --lila: #C8B6FF; --texto: #333; }
+        :root { --rosa-suave: #FDE2E4; --rosa-intenso: #E85C80; --texto: #333; }
         body { background: #FFF; color: var(--texto); }
 
+        /* Barra superior */
+        .top-bar { background: #FFF; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 14px; border-bottom: 1px solid #f5d5d9; flex-wrap: wrap; gap: 8px; }
+        .top-bar-center { color: var(--rosa-intenso); }
+
         /* Cabecera */
-        .top-bar { background: var(--rosa-suave); padding: 8px 5%; text-align: center; font-size: 14px; }
-        header { padding: 15px 5%; border-bottom: 1px solid #f0f0f0; }
-        .header-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-        .logo { font-size: 42px; font-weight: 900; letter-spacing: 3px; color: #000; text-decoration: none; }
-        .logo span { font-size: 12px; font-weight: 400; letter-spacing: normal; display: block; margin-top: 3px; }
-        .search-bar { flex: 1; min-width: 250px; max-width: 500px; position: relative; }
-        .search-bar input { width: 100%; padding: 10px 15px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
+        header { padding: 20px 5%; border-bottom: 1px solid #f5d5d9; }
+        .header-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .logo { font-size: 42px; font-weight: 300; letter-spacing: 6px; color: #000; text-decoration: none; }
+        .logo span { font-size: 13px; font-weight: 400; letter-spacing: 1px; display: block; margin-top: 5px; color: var(--rosa-intenso); }
+        .search-bar { flex: 1; min-width: 280px; max-width: 450px; position: relative; }
+        .search-bar input { width: 100%; padding: 10px 18px; border-radius: 25px; border: 1px solid #ddd; outline: none; font-size: 15px; }
         .nav-icons { display: flex; gap: 25px; align-items: center; }
-        .nav-icons a { color: #333; text-decoration: none; text-align: center; font-size: 13px; }
+        .nav-icons a { color: #333; text-decoration: none; text-align: center; font-size: 13px; position: relative; }
+        .badge { position: absolute; top: -8px; right: -8px; background: var(--rosa-intenso); color: white; font-size: 10px; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
         /* Navegación */
-        nav { padding: 12px 5%; border-bottom: 1px solid #f0f0f0; }
+        nav { padding: 15px 5%; border-bottom: 1px solid #f5d5d9; }
         nav ul { list-style: none; display: flex; gap: 35px; flex-wrap: wrap; }
-        nav a { color: #333; text-decoration: none; font-weight: 500; }
+        nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 15px; }
         nav a:hover { color: var(--rosa-intenso); }
 
-        /* Banner */
-        .banner { background: linear-gradient(90deg, var(--rosa-suave) 0%, #FFF1F3 100%); padding: 40px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative; overflow: hidden; }
-        .banner-text { flex: 1; min-width: 300px; z-index: 2; }
-        .banner-text h2 { font-size: 60px; color: var(--rosa-intenso); line-height: 1.1; margin-bottom: 15px; }
-        .banner-text p { font-size: 20px; margin-bottom: 30px; color: #555; }
-        .btn { background: var(--rosa-intenso); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; border: none; cursor: pointer; }
-        .banner-img { flex: 1; min-width: 300px; text-align: right; }
-        .banner-img img { max-width: 100%; border-radius: 10px; }
+        /* Banner principal */
+        .banner { background: linear-gradient(90deg, #FDE2E4 0%, #FEE9EB 100%); padding: 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative; border-radius: 12px; margin: 20px 5%; overflow: hidden; min-height: 420px; }
+        .banner-text { flex: 1; min-width: 320px; padding: 50px 40px; z-index: 2; }
+        .banner-text .bienvenida { font-size: 16px; color: #B04564; margin-bottom: 10px; letter-spacing: 2px; }
+        .banner-text h2 { font-size: 72px; color: var(--rosa-intenso); line-height: 1; margin-bottom: 15px; font-weight: 600; }
+        .banner-text .subtitulo { font-size: 22px; font-style: italic; color: #94485E; margin-bottom: 10px; }
+        .banner-text p { font-size: 15px; color: #666; margin-bottom: 30px; }
+        .btn { background: var(--rosa-intenso); color: white; padding: 12px 32px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; border: none; cursor: pointer; font-size: 15px; }
+        .banner-img { flex: 1; min-width: 350px; height: 420px; background: url('https://i.imgur.com/6KfZxL9.jpg') center center / cover no-repeat; }
+        .banner-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 3; }
+        .arrow-left { left: 20px; }
+        .arrow-right { right: 20px; }
+        .oferta-box { position: absolute; top: 30px; right: 30px; background: white; padding: 15px 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .oferta-box p { font-size: 14px; color: #666; }
 
-        /* Categorías */
-        .categorias { padding: 50px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .cat-card { padding: 30px; border-radius: 15px; position: relative; overflow: hidden; min-height: 300px; display: flex; flex-direction: column; justify-content: center; }
-        .esika { background: linear-gradient(135deg, #FDE2E4, #FFF1F3); }
-        .ropa { background: linear-gradient(135deg, #F3E5FF, #FDF2F8); }
-        .cat-card h3 { font-size: 36px; margin-bottom: 10px; }
-        .cat-card p { margin-bottom: 20px; max-width: 200px; }
-        .cat-btn { background: var(--rosa-intenso); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; }
+        /* Categorías Ésika y Ropa */
+        .categorias { padding: 0 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 30px 0; }
+        .cat-card { border-radius: 12px; padding: 30px; height: 320px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+        .esika { background: linear-gradient(90deg, #FDE2E4, #FEE9EB); }
+        .ropa { background: linear-gradient(90deg, #F3E5FF, #FDF2F8); }
+        .esika .cat-bg { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); font-size: 0; width: 200px; height: 260px; background: url('https://i.imgur.com/9pRqZ8Y.png') center/contain no-repeat; }
+        .ropa .cat-bg { position: absolute; right: 0; top: 0; width: 280px; height: 320px; background: url('https://i.imgur.com/5sT7xQ9.jpg') right center / cover no-repeat; }
+        .cat-content { position: relative; z-index: 2; max-width: 240px; }
+        .cat-card h3 { font-size: 34px; margin-bottom: 10px; font-weight: 600; }
+        .esika h3 { color: #942F52; }
+        .ropa h3 { color: #5C3D8C; }
+        .cat-card p { margin-bottom: 25px; font-size: 15px; color: #555; line-height: 1.5; }
+        .cat-btn { background: var(--rosa-intenso); color: white; padding: 10px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; font-size: 14px; }
 
         /* Beneficios */
-        .beneficios { padding: 30px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; background: #f9f9f9; margin: 0 5%; border-radius: 10px; }
-        .bene-item { text-align: center; padding: 15px; }
-        .bene-item p { font-size: 14px; margin-top: 8px; }
+        .beneficios { padding: 25px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 0 5% 40px; border-top: 1px solid #f0d8dc; border-bottom: 1px solid #f0d8dc; }
+        .bene-item { text-align: center; padding: 15px 10px; }
+        .bene-item p { font-size: 14px; margin-top: 8px; color: #555; }
 
         /* Productos */
-        .productos { padding: 50px 5%; }
-        .section-title { font-size: 28px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .ver-todo { color: var(--rosa-intenso); text-decoration: none; font-size: 16px; }
-        .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+        .productos { padding: 0 5% 50px; }
+        .section-title { font-size: 24px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .ver-todo { color: var(--rosa-intenso); text-decoration: none; font-size: 15px; }
+        .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 25px; }
         .prod-card { text-align: center; position: relative; }
-        .prod-img { background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 15px; height: 250px; display: flex; align-items: center; justify-content: center; }
-        .prod-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .prod-name { font-weight: 600; margin-bottom: 5px; }
-        .prod-price { color: var(--rosa-intenso); font-weight: 700; font-size: 18px; margin-bottom: 10px; }
-        .add-cart { background: var(--rosa-suave); color: var(--rosa-intenso); border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .prod-img { background: #f9f9f9; border-radius: 8px; padding: 15px; margin-bottom: 12px; height: 220px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .prod-img img { max-width: 85%; max-height: 85%; object-fit: contain; }
+        .prod-name { font-weight: 500; margin-bottom: 5px; font-size: 14px; color: #444; }
+        .prod-price { color: var(--rosa-intenso); font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+        .add-cart { background: var(--rosa-suave); color: var(--rosa-intenso); border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 16px; }
 
         /* Nuevos ingresos + Oferta */
-        .nuevos { padding: 0 5% 50px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .oferta-card { background: linear-gradient(135deg, #FDE2E4, #FBCBD0); border-radius: 15px; padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .oferta-card h3 { font-size: 48px; color: var(--rosa-intenso); margin-bottom: 15px; }
-        .codigo { background: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; margin-top: 15px; }
+        .nuevos { padding: 0 5% 60px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .oferta-card { background: linear-gradient(135deg, #FDE2E4, #FBCBD0); border-radius: 12px; padding: 35px 25px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .oferta-card h3 { font-size: 42px; color: var(--rosa-intenso); margin-bottom: 15px; font-weight: 700; }
+        .oferta-card p { font-size: 15px; color: #666; }
+        .codigo { background: white; padding: 12px 25px; border-radius: 8px; font-weight: 700; margin-top: 15px; color: var(--rosa-intenso); font-size: 18px; }
 
         /* Footer */
-        footer { background: var(--rosa-suave); padding: 40px 5%; text-align: center; margin-top: 50px; }
+        footer { background: #FFF; padding: 40px 5% 30px; text-align: center; border-top: 1px solid #f5d5d9; }
+        .footer-text { font-family: cursive; font-size: 22px; color: #B04564; margin-bottom: 10px; }
         .redes { margin: 20px 0; }
-        .redes a { margin: 0 10px; color: #333; font-size: 20px; text-decoration: none; }
+        .redes a { margin: 0 10px; color: #666; font-size: 20px; text-decoration: none; }
+        .arriba { display: inline-block; margin-top: 20px; color: var(--rosa-intenso); text-decoration: none; font-size: 20px; }
 
         /* Botón flotante WhatsApp */
-        .whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 100; }
+        .whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 100; }
 
-        @media (max-width: 768px) {
-            .banner-text h2 { font-size: 40px; }
-            nav ul { gap: 15px; }
+        @media (max-width: 900px) {
+            .categorias { grid-template-columns: 1fr; }
             .nuevos { grid-template-columns: 1fr; }
+            .banner-text h2 { font-size: 50px; }
+            .esika .cat-bg { opacity: 0.5; }
         }
     </style>
 </head>
@@ -86,7 +105,9 @@
 
     <!-- Barra superior -->
     <div class="top-bar">
-        🚚 Envío gratis por compras mayores a S/150 | 💬 Escríbenos 933 123 456
+        <span></span>
+        <span class="top-bar-center">❤️ Envío gratis por compras mayores a S/150</span>
+        <span>💬 Escríbenos 933 123 456</span>
     </div>
 
     <!-- Cabecera -->
@@ -98,8 +119,8 @@
             </div>
             <div class="nav-icons">
                 <a href="#">👤<br>Mi cuenta</a>
-                <a href="#">🤍<br>Favoritos</a>
-                <a href="#">🛒<br>Carrito</a>
+                <a href="#">🤍<br>Favoritos <span class="badge">0</span></a>
+                <a href="#">🛒<br>Carrito <span class="badge">0</span></a>
             </div>
         </div>
     </header>
@@ -119,27 +140,38 @@
 
     <!-- Banner principal -->
     <section class="banner">
+        <button class="banner-arrow arrow-left">‹</button>
         <div class="banner-text">
-            <h2>BIENVENIDO A NUVIA</h2>
-            <p>Descubre tu belleza, expresa tu estilo<br>Belleza, moda y más en un solo lugar.</p>
+            <p class="bienvenida">BIENVENIDA A ❤️</p>
+            <h2>NUVIA</h2>
+            <p class="subtitulo">Descubre tu belleza, expresa tu estilo</p>
+            <p>Belleza, moda y más en un solo lugar.</p>
             <a href="#" class="btn">COMPRAR AHORA</a>
         </div>
-        <div class="banner-img">
-            <img src="https://images.unsplash.com/photo-1595425959677-99c57e8e5e4c?w=500" alt="Perfume y belleza">
+        <div class="banner-img"></div>
+        <button class="banner-arrow arrow-right">›</button>
+        <div class="oferta-box">
+            <p>🎁 OFERTAS EXCLUSIVAS<br>todos los días</p>
         </div>
     </section>
 
     <!-- Categorías: Ésika y Ropa -->
     <section class="categorias">
         <div class="cat-card esika">
-            <h3>ÉSIKA</h3>
-            <p>Fragancia, maquillaje y cuidado personal</p>
-            <a href="#" class="cat-btn">VER PRODUCTOS →</a>
+            <div class="cat-bg"></div>
+            <div class="cat-content">
+                <h3>ÉSIKA</h3>
+                <p>Fragancias, maquillaje y cuidado personal</p>
+                <a href="#" class="cat-btn">VER PRODUCTOS →</a>
+            </div>
         </div>
         <div class="cat-card ropa">
-            <h3>ROPA</h3>
-            <p>Encuentra tu look ideal para cada ocasión</p>
-            <a href="#" class="cat-btn">VER COLECCIÓN →</a>
+            <div class="cat-bg"></div>
+            <div class="cat-content">
+                <h3>ROPA</h3>
+                <p>Encuentra tu look ideal para cada ocasión</p>
+                <a href="#" class="cat-btn">VER COLECCIÓN →</a>
+            </div>
         </div>
     </section>
 
@@ -149,7 +181,7 @@
         <div class="bene-item">💳<p>Pagos 100% seguros</p></div>
         <div class="bene-item">✨<p>Productos originales</p></div>
         <div class="bene-item">🎧<p>Atención personalizada</p></div>
-        <div class="bene-item">🔄<p>Cambios fáciles y rápidos</p></div>
+        <div class="bene-item">📦<p>Cambios fáciles y rápidos</p></div>
     </section>
 
     <!-- Productos destacados -->
@@ -160,37 +192,37 @@
         </div>
         <div class="prod-grid">
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300" alt="Perfume"></div>
+                <div class="prod-img"><img src="https://i.imgur.com/7ZxQw8A.png" alt="Vibranza Ésika"></div>
                 <h4 class="prod-name">Vibranza Eau de Parfum - Ésika</h4>
                 <p class="prod-price">S/ 89.90</p>
                 <button class="add-cart">🛒</button>
             </div>
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1583229827307-8a793d85703c?w=300" alt="Labial"></div>
+                <div class="prod-img"><img src="https://i.imgur.com/9bXyL2M.png" alt="Labial Velvet"></div>
                 <h4 class="prod-name">Labial Hidratante Velvet - Ésika</h4>
                 <p class="prod-price">S/ 29.90</p>
                 <button class="add-cart">🛒</button>
             </div>
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=300" alt="Máscara"></div>
+                <div class="prod-img"><img src="https://i.imgur.com/4kL7zqR.png" alt="Máscara 5 en 1"></div>
                 <h4 class="prod-name">Máscara Multibeneficios 5 en 1 - Ésika Pro</h4>
                 <p class="prod-price">S/ 39.90</p>
                 <button class="add-cart">🛒</button>
             </div>
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300" alt="Polo"></div>
+                <div class="prod-img"><img src="https://i.imgur.com/8xYz9pL.png" alt="Polo Básico"></div>
                 <h4 class="prod-name">Polo Básico Algodón</h4>
                 <p class="prod-price">S/ 39.90</p>
                 <button class="add-cart">🛒</button>
             </div>
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300" alt="Vestido"></div>
+                <div class="prod-img"><img src="https://i.imgur.com/2qWxN9Q.png" alt="Vestido Floral"></div>
                 <h4 class="prod-name">Vestido Floral</h4>
                 <p class="prod-price">S/ 79.90</p>
                 <button class="add-cart">🛒</button>
             </div>
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300" alt="Jeans"></div>
+                <div class="prod-img"><img src="https://i.imgur.com/6xKxW8b.png" alt="Jean Wide Leg"></div>
                 <h4 class="prod-name">Jean Wide Leg</h4>
                 <p class="prod-price">S/ 89.90</p>
                 <button class="add-cart">🛒</button>
@@ -203,12 +235,12 @@
         <div>
             <h2 class="section-title">Nuevos Ingresos</h2>
             <div class="prod-grid">
-                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=200"></div></div>
-                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=200"></div></div>
-                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200"></div></div>
-                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1583743814966-89392d96a52f?w=200"></div></div>
-                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200"></div></div>
-                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://i.imgur.com/7ZxQw8A.png"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://i.imgur.com/9bXyL2M.png"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://i.imgur.com/4kL7zqR.png"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://i.imgur.com/8xYz9pL.png"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://i.imgur.com/2qWxN9Q.png"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://i.imgur.com/6xKxW8b.png"></div></div>
             </div>
         </div>
         <div class="oferta-card">
@@ -220,14 +252,15 @@
 
     <!-- Footer -->
     <footer>
-        <h3>Gracias por elegir NUVIA</h3>
+        <p class="footer-text">Gracias por elegir Nuvia ❤️</p>
         <p>¡Eres única, tú estilo también!</p>
         <div class="redes">
-            <a href="#">📷 Instagram</a>
-            <a href="#">📘 Facebook</a>
-            <a href="#">🎵 TikTok</a>
+            <a href="#">📷</a>
+            <a href="#">📘</a>
+            <a href="#">🎵</a>
+            <a href="#">ⓒ</a>
         </div>
-        <p>© 2026 NUVIA - Todos los derechos reservados</p>
+        <a href="#" class="arriba">⬆️</a>
     </footer>
 
     <!-- Botón WhatsApp flotante -->
