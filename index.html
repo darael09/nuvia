@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUVIA - Belleza que te inspira, estilo que te define</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        :root { --rosa-suave: #FDE2E4; --rosa-intenso: #E94057; --lila: #C8B6FF; --texto: #333; }
+        body { background: #FFF; color: var(--texto); }
+
+        /* Cabecera */
+        .top-bar { background: var(--rosa-suave); padding: 8px 5%; text-align: center; font-size: 14px; }
+        header { padding: 15px 5%; border-bottom: 1px solid #f0f0f0; }
+        .header-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 42px; font-weight: 900; letter-spacing: 3px; color: #000; text-decoration: none; }
+        .logo span { font-size: 12px; font-weight: 400; letter-spacing: normal; display: block; margin-top: 3px; }
+        .search-bar { flex: 1; min-width: 250px; max-width: 500px; position: relative; }
+        .search-bar input { width: 100%; padding: 10px 15px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
+        .nav-icons { display: flex; gap: 25px; align-items: center; }
+        .nav-icons a { color: #333; text-decoration: none; text-align: center; font-size: 13px; }
+
+        /* Navegación */
+        nav { padding: 12px 5%; border-bottom: 1px solid #f0f0f0; }
+        nav ul { list-style: none; display: flex; gap: 35px; flex-wrap: wrap; }
+        nav a { color: #333; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: var(--rosa-intenso); }
+
+        /* Banner */
+        .banner { background: linear-gradient(90deg, var(--rosa-suave) 0%, #FFF1F3 100%); padding: 40px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative; overflow: hidden; }
+        .banner-text { flex: 1; min-width: 300px; z-index: 2; }
+        .banner-text h2 { font-size: 60px; color: var(--rosa-intenso); line-height: 1.1; margin-bottom: 15px; }
+        .banner-text p { font-size: 20px; margin-bottom: 30px; color: #555; }
+        .btn { background: var(--rosa-intenso); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; border: none; cursor: pointer; }
+        .banner-img { flex: 1; min-width: 300px; text-align: right; }
+        .banner-img img { max-width: 100%; border-radius: 10px; }
+
+        /* Categorías */
+        .categorias { padding: 50px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .cat-card { padding: 30px; border-radius: 15px; position: relative; overflow: hidden; min-height: 300px; display: flex; flex-direction: column; justify-content: center; }
+        .esika { background: linear-gradient(135deg, #FDE2E4, #FFF1F3); }
+        .ropa { background: linear-gradient(135deg, #F3E5FF, #FDF2F8); }
+        .cat-card h3 { font-size: 36px; margin-bottom: 10px; }
+        .cat-card p { margin-bottom: 20px; max-width: 200px; }
+        .cat-btn { background: var(--rosa-intenso); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; }
+
+        /* Beneficios */
+        .beneficios { padding: 30px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; background: #f9f9f9; margin: 0 5%; border-radius: 10px; }
+        .bene-item { text-align: center; padding: 15px; }
+        .bene-item p { font-size: 14px; margin-top: 8px; }
+
+        /* Productos */
+        .productos { padding: 50px 5%; }
+        .section-title { font-size: 28px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .ver-todo { color: var(--rosa-intenso); text-decoration: none; font-size: 16px; }
+        .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+        .prod-card { text-align: center; position: relative; }
+        .prod-img { background: #f9f9f9; border-radius: 10px; padding: 20px; margin-bottom: 15px; height: 250px; display: flex; align-items: center; justify-content: center; }
+        .prod-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .prod-name { font-weight: 600; margin-bottom: 5px; }
+        .prod-price { color: var(--rosa-intenso); font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+        .add-cart { background: var(--rosa-suave); color: var(--rosa-intenso); border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: 600; }
+
+        /* Nuevos ingresos + Oferta */
+        .nuevos { padding: 0 5% 50px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .oferta-card { background: linear-gradient(135deg, #FDE2E4, #FBCBD0); border-radius: 15px; padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .oferta-card h3 { font-size: 48px; color: var(--rosa-intenso); margin-bottom: 15px; }
+        .codigo { background: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; margin-top: 15px; }
+
+        /* Footer */
+        footer { background: var(--rosa-suave); padding: 40px 5%; text-align: center; margin-top: 50px; }
+        .redes { margin: 20px 0; }
+        .redes a { margin: 0 10px; color: #333; font-size: 20px; text-decoration: none; }
+
+        /* Botón flotante WhatsApp */
+        .whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 100; }
+
+        @media (max-width: 768px) {
+            .banner-text h2 { font-size: 40px; }
+            nav ul { gap: 15px; }
+            .nuevos { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superior -->
+    <div class="top-bar">
+        🚚 Envío gratis por compras mayores a S/150 | 💬 Escríbenos 933 123 456
+    </div>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="header-top">
+            <a href="#" class="logo">NUVIA <span>Belleza que te inspira, estilo que te define</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos...">
+            </div>
+            <div class="nav-icons">
+                <a href="#">👤<br>Mi cuenta</a>
+                <a href="#">🤍<br>Favoritos</a>
+                <a href="#">🛒<br>Carrito</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#">INICIO</a></li>
+            <li><a href="#">ÉSIKA</a></li>
+            <li><a href="#">ROPA</a></li>
+            <li><a href="#">NUEVOS INGRESOS</a></li>
+            <li><a href="#">OFERTAS</a></li>
+            <li><a href="#">ACCESORIOS</a></li>
+            <li><a href="#">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <!-- Banner principal -->
+    <section class="banner">
+        <div class="banner-text">
+            <h2>BIENVENIDO A NUVIA</h2>
+            <p>Descubre tu belleza, expresa tu estilo<br>Belleza, moda y más en un solo lugar.</p>
+            <a href="#" class="btn">COMPRAR AHORA</a>
+        </div>
+        <div class="banner-img">
+            <img src="https://images.unsplash.com/photo-1595425959677-99c57e8e5e4c?w=500" alt="Perfume y belleza">
+        </div>
+    </section>
+
+    <!-- Categorías: Ésika y Ropa -->
+    <section class="categorias">
+        <div class="cat-card esika">
+            <h3>ÉSIKA</h3>
+            <p>Fragancia, maquillaje y cuidado personal</p>
+            <a href="#" class="cat-btn">VER PRODUCTOS →</a>
+        </div>
+        <div class="cat-card ropa">
+            <h3>ROPA</h3>
+            <p>Encuentra tu look ideal para cada ocasión</p>
+            <a href="#" class="cat-btn">VER COLECCIÓN →</a>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="beneficios">
+        <div class="bene-item">🚚<p>Envíos a todo el Perú</p></div>
+        <div class="bene-item">💳<p>Pagos 100% seguros</p></div>
+        <div class="bene-item">✨<p>Productos originales</p></div>
+        <div class="bene-item">🎧<p>Atención personalizada</p></div>
+        <div class="bene-item">🔄<p>Cambios fáciles y rápidos</p></div>
+    </section>
+
+    <!-- Productos destacados -->
+    <section class="productos">
+        <div class="section-title">
+            <h2>Productos Destacados</h2>
+            <a href="#" class="ver-todo">Ver todo →</a>
+        </div>
+        <div class="prod-grid">
+            <div class="prod-card">
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300" alt="Perfume"></div>
+                <h4 class="prod-name">Vibranza Eau de Parfum - Ésika</h4>
+                <p class="prod-price">S/ 89.90</p>
+                <button class="add-cart">🛒</button>
+            </div>
+            <div class="prod-card">
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1583229827307-8a793d85703c?w=300" alt="Labial"></div>
+                <h4 class="prod-name">Labial Hidratante Velvet - Ésika</h4>
+                <p class="prod-price">S/ 29.90</p>
+                <button class="add-cart">🛒</button>
+            </div>
+            <div class="prod-card">
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=300" alt="Máscara"></div>
+                <h4 class="prod-name">Máscara Multibeneficios 5 en 1 - Ésika Pro</h4>
+                <p class="prod-price">S/ 39.90</p>
+                <button class="add-cart">🛒</button>
+            </div>
+            <div class="prod-card">
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300" alt="Polo"></div>
+                <h4 class="prod-name">Polo Básico Algodón</h4>
+                <p class="prod-price">S/ 39.90</p>
+                <button class="add-cart">🛒</button>
+            </div>
+            <div class="prod-card">
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300" alt="Vestido"></div>
+                <h4 class="prod-name">Vestido Floral</h4>
+                <p class="prod-price">S/ 79.90</p>
+                <button class="add-cart">🛒</button>
+            </div>
+            <div class="prod-card">
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300" alt="Jeans"></div>
+                <h4 class="prod-name">Jean Wide Leg</h4>
+                <p class="prod-price">S/ 89.90</p>
+                <button class="add-cart">🛒</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuevos ingresos + Oferta -->
+    <section class="nuevos">
+        <div>
+            <h2 class="section-title">Nuevos Ingresos</h2>
+            <div class="prod-grid">
+                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=200"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=200"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1583743814966-89392d96a52f?w=200"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200"></div></div>
+                <div class="prod-card"><div class="prod-img"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200"></div></div>
+            </div>
+        </div>
+        <div class="oferta-card">
+            <h3>10% OFF</h3>
+            <p>en tu primera compra</p>
+            <div class="codigo">NUVIA10</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Gracias por elegir NUVIA</h3>
+        <p>¡Eres única, tú estilo también!</p>
+        <div class="redes">
+            <a href="#">📷 Instagram</a>
+            <a href="#">📘 Facebook</a>
+            <a href="#">🎵 TikTok</a>
+        </div>
+        <p>© 2026 NUVIA - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Botón WhatsApp flotante -->
+    <a href="https://wa.me/51933123456" class="whatsapp" target="_blank">💬</a>
+
+</body>
+</html>
