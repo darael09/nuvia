@@ -256,6 +256,79 @@
             .banner-slide { flex-direction: column; }
             .banner-img { width: 100%; height: 300px; }
         }
+        /* === SISTEMA DE PEDIDOS === */
+        .buy-now {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            background: var(--rosa-intenso);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .buy-now:hover {
+            transform: scale(1.03);
+        }
+        .cart-section {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(194, 24, 91, 0.1);
+        }
+        .cart-title {
+            text-align: center;
+            color: var(--rosa-intenso);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0d6de;
+        }
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--rosa-intenso);
+            cursor: pointer;
+            font-size: 18px;
+        }
+        #cart-empty {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+        }
+        .cart-total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 20px;
+            color: var(--rosa-intenso);
+        }
+        .send-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
@@ -392,6 +465,7 @@
                 <h4 class="prod-name">Vibranza Eau de Parfum</h4>
                 <p class="prod-price">S/ 89.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
+                <button class="buy-now" data-name="Vibranza Eau de Parfum" data-price="89.90">COMPRAR AHORA</button>
             </div>
             <div class="prod-card" data-category="esika">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1583229827307-8a793d85703c?w=300&h=300&fit=crop" alt="Labial"></div>
@@ -399,6 +473,7 @@
                 <h4 class="prod-name">Labial Hidratante Velvet</h4>
                 <p class="prod-price">S/ 29.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
+                <button class="buy-now" data-name="Labial Hidratante Velvet" data-price="29.90">COMPRAR AHORA</button>
             </div>
             <div class="prod-card" data-category="esika">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=300&h=300&fit=crop" alt="Máscara"></div>
@@ -406,6 +481,7 @@
                 <h4 class="prod-name">Máscara Multibeneficios 5 en 1</h4>
                 <p class="prod-price">S/ 39.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
+                <button class="buy-now" data-name="Máscara Multibeneficios 5 en 1" data-price="39.90">COMPRAR AHORA</button>
             </div>
             <div class="prod-card" data-category="ropa">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop" alt="Polo"></div>
@@ -413,6 +489,7 @@
                 <h4 class="prod-name">Polo Básico Algodón</h4>
                 <p class="prod-price">S/ 39.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
+                <button class="buy-now" data-name="Polo Básico Algodón" data-price="39.90">COMPRAR AHORA</button>
             </div>
             <div class="prod-card" data-category="ropa">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop" alt="Vestido"></div>
@@ -420,6 +497,7 @@
                 <h4 class="prod-name">Vestido Floral</h4>
                 <p class="prod-price">S/ 79.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
+                <button class="buy-now" data-name="Vestido Floral" data-price="79.90">COMPRAR AHORA</button>
             </div>
             <div class="prod-card" data-category="ropa">
                 <div class="prod-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&h=300&fit=crop" alt="Jeans"></div>
@@ -427,10 +505,20 @@
                 <h4 class="prod-name">Jean Wide Leg</h4>
                 <p class="prod-price">S/ 89.90</p>
                 <button class="add-cart"><i class="fas fa-shopping-cart"></i></button>
+                <button class="buy-now" data-name="Jean Wide Leg" data-price="89.90">COMPRAR AHORA</button>
             </div>
         </div>
     </section>
-
+<!-- CARRITO DE COMPRAS & PEDIDO -->
+<section class="cart-section">
+    <h2 class="cart-title">🛒 Tu Pedido</h2>
+    <div id="cart-items"></div>
+    <div id="cart-empty">Tu carrito está vacío</div>
+    <div class="cart-total">
+        <strong>Total: S/ <span id="total-price">0.00</span></strong>
+    </div>
+    <button id="send-order" class="send-btn">📲 Enviar Pedido por WhatsApp</button>
+</section>
     <section class="nuevos">
         <div>
             <h2 class="section-title">Nuevos Ingresos</h2>
@@ -581,6 +669,118 @@
             document.querySelector('.productos').scrollIntoView({ behavior: 'smooth' });
         });
     });
-</script>   
+</script> 
+    <!-- === SISTEMA DE PEDIDOS POR WHATSAPP === -->
+<script>
+    // 👇 TU NÚMERO DE WHATSAPP — PERÚ 🇵🇪
+    const TELEFONO_VENDEDOR = '51902734045'; // ✅ Tu número ya está puesto
+    
+    let cart = [];
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartEmpty = document.getElementById('cart-empty');
+    const totalPriceEl = document.getElementById('total-price');
+    const sendOrderBtn = document.getElementById('send-order');
+    const addButtons = document.querySelectorAll('.add-cart');
+    const buyButtons = document.querySelectorAll('.buy-now');
+
+    // Actualizar vista del carrito
+    function updateCartView() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartEmpty.classList.remove('hidden');
+            sendOrderBtn.classList.add('hidden');
+        } else {
+            cartEmpty.classList.add('hidden');
+            sendOrderBtn.classList.remove('hidden');
+            
+            cart.forEach((item, index) => {
+                total += parseFloat(item.price);
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        S/ ${item.price}
+                    </div>
+                    <button class="remove-item" data-index="${index}">🗑️</button>
+                `;
+                cartItemsContainer.appendChild(itemEl);
+            });
+        }
+
+        totalPriceEl.textContent = total.toFixed(2);
+        updateCartCount();
+    }
+
+    // Actualizar contador del icono del carrito
+    function updateCartCount() {
+        const badge = document.querySelector('.nav-icons .badge');
+        if (badge) badge.textContent = cart.length;
+    }
+
+    // Agregar al carrito
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCartView();
+        // Scroll suave al carrito
+        document.querySelector('.cart-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Botones "Agregar al carrito"
+    addButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = btn.dataset.price;
+            addToCart(name, price);
+            // Feedback visual
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            btn.style.background = 'var(--rosa-intenso)';
+            btn.style.color = 'white';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+                btn.style.background = '';
+                btn.style.color = '';
+            }, 1500);
+        });
+    });
+
+    // Botones "Comprar ahora" — compra directa
+    buyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = btn.dataset.price;
+            const mensaje = `¡Hola! Quiero comprar:%0A- ${name} — S/ ${price}`;
+            window.open(`https://wa.me/${TELEFONO_VENDEDOR}?text=${mensaje}`, '_blank');
+        });
+    });
+
+    // Eliminar producto del carrito
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-item')) {
+            const index = parseInt(e.target.dataset.index);
+            cart.splice(index, 1);
+            updateCartView();
+        }
+    });
+
+    // Enviar pedido completo por WhatsApp
+    sendOrderBtn.addEventListener('click', () => {
+        if (cart.length === 0) return;
+        
+        let mensaje = '¡Hola! Quiero hacer un pedido:%0A%0A';
+        cart.forEach((item, i) => {
+            mensaje += `${i + 1}. ${item.name} — S/ ${item.price}%0A`;
+        });
+        const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+        mensaje += `%0A📋 Total: S/ ${total.toFixed(2)}`;
+        
+        window.open(`https://wa.me/${TELEFONO_VENDEDOR}?text=${mensaje}`, '_blank');
+    });
+
+    // Inicializar vista
+    updateCartView();
+</script>
 </body>
 </html>
