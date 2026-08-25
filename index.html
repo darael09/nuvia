@@ -426,47 +426,130 @@
     </div>
 </section>
 
-    <section class="categories">
-  <!-- 👨 PARA ÉL -->
-  <div class="cat-card hombre">
-    <div class="cat-bg"></div>
-    <div class="cat-content">
-      <h3>PARA ÉL</h3>
-      <p>Ropa moderna y cómoda para caballeros</p>
-      <a href="#" class="cat-btn" data-filter="hombre">VER PRODUCTOS →</a>
+   !-- 📂 MENÚ DE CATEGORÍAS DESPLEGABLE -->
+<div class="menu-categorias">
+  <div class="menu-item">
+    <button class="menu-btn">💄 Ésika ▾</button>
+    <div class="menu-desplegable">
+      <a href="#" data-filter="mujer">Maquillaje</a>
+      <a href="#" data-filter="mujer">Perfumes</a>
+      <a href="#" data-filter="mujer">Cuidado Personal</a>
+      <a href="#" data-filter="esika">Ver Todo Ésika</a>
     </div>
   </div>
 
-  <!-- 👩 PARA ELLA -->
-  <div class="cat-card mujer">
-    <div class="cat-bg"></div>
-    <div class="cat-content">
-      <h3>PARA ELLA</h3>
-      <p>Estilo y tendencia para damas</p>
-      <a href="#" class="cat-btn" data-filter="mujer">VER PRODUCTOS →</a>
+  <div class="menu-item">
+    <button class="menu-btn">👕 Ropa ▾</button>
+    <div class="menu-desplegable">
+      <a href="#" data-filter="hombre">👨 Para Él</a>
+      <a href="#" data-filter="mujer">👩 Para Ella</a>
+      <a href="#" data-filter="ropa">👕 Unisex</a>
+      <a href="#" data-filter="*">👀 Ver Todo</a>
     </div>
   </div>
+</div>
 
-  <!-- 👕 UNISEX / ROPA -->
-  <div class="cat-card ropa">
-    <div class="cat-bg"></div>
-    <div class="cat-content">
-      <h3>UNISEX</h3>
-      <p>Para todos, diseños que encantan</p>
-      <a href="#" class="cat-btn" data-filter="ropa">VER COLECCIÓN →</a>
-    </div>
-  </div>
+<style>
+/* ===== ESTILO DEL MENÚ DESPLEGABLE ===== */
+.menu-categorias {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 20px 5%;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 30px;
+}
 
-  <!-- 💄 ÉSIKA (lo que ya tenías) -->
-  <div class="cat-card esika">
-    <div class="cat-bg"></div>
-    <div class="cat-content">
-      <h3>ÉSIKA</h3>
-      <p>Fragancias, maquillaje y cuidado personal</p>
-      <a href="#" class="cat-btn" data-filter="esika">VER PRODUCTOS →</a>
-    </div>
-  </div>
-</section>
+.menu-item {
+  position: relative;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.menu-btn:hover {
+  color: #e91e63;
+}
+
+.menu-desplegable {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.menu-item:hover .menu-desplegable {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-desplegable a {
+  display: block;
+  padding: 12px 20px;
+  color: #444;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu-desplegable a:hover {
+  background: #f9f0f4;
+  color: #e91e63;
+}
+
+/* ===== RESPONSIVE PARA CELULAR ===== */
+@media (max-width: 768px) {
+  .menu-categorias {
+    gap: 20px;
+    padding: 15px 3%;
+  }
+  .menu-btn {
+    font-size: 16px;
+  }
+}
+</style>
+
+<script>
+// ===== FUNCIONAMIENTO DEL FILTRO AL HACER CLIC =====
+document.querySelectorAll('.menu-desplegable a').forEach(enlace => {
+  enlace.addEventListener('click', function(e) {
+    e.preventDefault();
+    const filtro = this.getAttribute('data-filter');
+    
+    // Filtrar productos
+    document.querySelectorAll('.prod-card').forEach(producto => {
+      const categoria = producto.getAttribute('data-category');
+      if (filtro === '*' || categoria === filtro) {
+        producto.style.display = 'block';
+      } else {
+        producto.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
       <section class="beneficios">
         <div class="bene-item"><i class="fas fa-truck"></i><p>Envíos a todo el Perú</p></div>
         <div class="bene-item"><i class="fas fa-lock"></i><p>Pagos 100% seguros</p></div>
