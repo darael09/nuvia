@@ -922,20 +922,31 @@ ventanaFoto.addEventListener('click', (e) => {
     }
 });
 </script>
-    <script>
+    <script> 
 document.querySelectorAll('#mainNav .submenu a').forEach(enlace => {
   enlace.addEventListener('click', function(e) {
     e.preventDefault();
     const filtro = this.getAttribute('data-filter');
-    
+    console.log('Filtro elegido:', filtro);
+
     document.querySelectorAll('.prod-card').forEach(producto => {
       const categoria = producto.getAttribute('data-category');
-      if (filtro === '*' || categoria === filtro || (filtro === 'esika' && categoria !== 'hombre' && categoria !== 'ropa')) {
+      
+      if (filtro === '*' || filtro === 'todo') {
         producto.style.display = 'block';
-      } else {
-        producto.style.display = 'none';
       }
-    });
+      else if (filtro === 'hombre') {
+        producto.style.display = (categoria === 'hombre') ? 'block' : 'none';
+      }
+      else if (filtro === 'mujer') {
+        producto.style.display = (categoria === 'mujer') ? 'block' : 'none';
+      }
+      else if (filtro === 'ropa') {
+        producto.style.display = (categoria === 'ropa') ? 'block' : 'none';
+      }
+      else if (filtro === 'esika') {
+        producto.style.display = (categoria === 'esika' || categoria === 'mujer') ? 'block' : 'none';
+      }
   });
 });
 </script>
