@@ -358,15 +358,36 @@
     </header>
 
     <nav id="mainNav">
-    <ul>
-        <li><a href="#" data-filter="todos" class="filter-link active">INICIO</a></li>
-        <li><a href="#" data-filter="esika" class="filter-link">ÉSIKA</a></li>
-        <li><a href="#" data-filter="ropa" class="filter-link">ROPA</a></li>
-        <li><a href="#" data-filter="nuevos" class="filter-link">NUEVOS INGRESOS</a></li>
-        <li><a href="#" data-filter="ofertas" class="filter-link">OFERTAS</a></li>
-        <li><a href="#" data-filter="accesorios" class="filter-link">ACCESORIOS</a></li>
-        <li><a href="#" data-filter="contacto" class="filter-link">CONTACTO</a></li>
-    </ul>
+  <ul>
+    <li><a href="#" data-filter="todos" class="filter-link active">INICIO</a></li>
+
+    <!--  ÉSIKA CON SUBMENU -->
+    <li class="has-submenu">
+      <a href="#" class="filter-link">ÉSIKA ▾</a>
+      <ul class="submenu">
+        <li><a href="#" data-filter="maquillaje">Maquillaje</a></li>
+        <li><a href="#" data-filter="perfumes">Perfumes</a></li>
+        <li><a href="#" data-filter="cuidado">Cuidado Personal</a></li>
+        <li><a href="#" data-filter="esika">Ver Todo Ésika</a></li>
+      </ul>
+    </li>
+
+    <!--  ROPA CON SUBMENU -->
+    <li class="has-submenu">
+      <a href="#" class="filter-link">ROPA ▾</a>
+      <ul class="submenu">
+        <li><a href="#" data-filter="hombre"> Para Él</a></li>
+        <li><a href="#" data-filter="mujer"> Para Ella</a></li>
+        <li><a href="#" data-filter="ropa"> Unisex</a></li>
+        <li><a href="#" data-filter="*"> Ver Todo</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#" data-filter="nuevos" class="filter-link">NUEVOS INGRESOS</a></li>
+    <li><a href="#" data-filter="ofertas" class="filter-link">OFERTAS</a></li>
+    <li><a href="#" data-filter="accesorios" class="filter-link">ACCESORIOS</a></li>
+    <li><a href="#" data-filter="contacto" class="filter-link">CONTACTO</a></li>
+  </ul>
 </nav>
 
     <section class="banner">
@@ -425,130 +446,6 @@
         <button class="dot" data-slide="3"></button>
     </div>
 </section>
-
-   !-- 📂 MENÚ DE CATEGORÍAS DESPLEGABLE -->
-<div class="menu-categorias">
-  <div class="menu-item">
-    <button class="menu-btn">💄 Ésika ▾</button>
-    <div class="menu-desplegable">
-      <a href="#" data-filter="mujer">Maquillaje</a>
-      <a href="#" data-filter="mujer">Perfumes</a>
-      <a href="#" data-filter="mujer">Cuidado Personal</a>
-      <a href="#" data-filter="esika">Ver Todo Ésika</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-    <button class="menu-btn">👕 Ropa ▾</button>
-    <div class="menu-desplegable">
-      <a href="#" data-filter="hombre">👨 Para Él</a>
-      <a href="#" data-filter="mujer">👩 Para Ella</a>
-      <a href="#" data-filter="ropa">👕 Unisex</a>
-      <a href="#" data-filter="*">👀 Ver Todo</a>
-    </div>
-  </div>
-</div>
-
-<style>
-/* ===== ESTILO DEL MENÚ DESPLEGABLE ===== */
-.menu-categorias {
-  display: flex;
-  justify-content: flex-start;
-  gap: 40px;
-  padding: 20px 5%;
-  background: #fff;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 30px;
-}
-
-.menu-item {
-  position: relative;
-}
-
-.menu-btn {
-  background: none;
-  border: none;
-  font-size: 18px;
-  font-weight: 600;
-  color: #222;
-  cursor: pointer;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: color 0.2s;
-}
-
-.menu-btn:hover {
-  color: #e91e63;
-}
-
-.menu-desplegable {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  min-width: 200px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  padding: 10px 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-.menu-item:hover .menu-desplegable {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.menu-desplegable a {
-  display: block;
-  padding: 12px 20px;
-  color: #444;
-  text-decoration: none;
-  font-size: 15px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.menu-desplegable a:hover {
-  background: #f9f0f4;
-  color: #e91e63;
-}
-
-/* ===== RESPONSIVE PARA CELULAR ===== */
-@media (max-width: 768px) {
-  .menu-categorias {
-    gap: 20px;
-    padding: 15px 3%;
-  }
-  .menu-btn {
-    font-size: 16px;
-  }
-}
-</style>
-
-<script>
-// ===== FUNCIONAMIENTO DEL FILTRO AL HACER CLIC =====
-document.querySelectorAll('.menu-desplegable a').forEach(enlace => {
-  enlace.addEventListener('click', function(e) {
-    e.preventDefault();
-    const filtro = this.getAttribute('data-filter');
-    
-    // Filtrar productos
-    document.querySelectorAll('.prod-card').forEach(producto => {
-      const categoria = producto.getAttribute('data-category');
-      if (filtro === '*' || categoria === filtro) {
-        producto.style.display = 'block';
-      } else {
-        producto.style.display = 'none';
-      }
-    });
-  });
-});
 </script>
       <section class="beneficios">
         <div class="bene-item"><i class="fas fa-truck"></i><p>Envíos a todo el Perú</p></div>
