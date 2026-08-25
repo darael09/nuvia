@@ -151,6 +151,57 @@
             background: var(--rosa-intenso);
             opacity: 0.7;
         }
+        /* === MENÚ HAMBURGUESA PARA CELULAR === */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--rosa-intenso);
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .menu-toggle i {
+            transition: transform 0.3s ease;
+        }
+        .menu-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* Ocultar menú en celular por defecto */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+            #mainNav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                padding: 0;
+            }
+            #mainNav.active {
+                max-height: 500px;
+                border-bottom: 1px solid #f0d0d5;
+            }
+            #mainNav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 15px 5%;
+            }
+            #mainNav li {
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                border-bottom: 1px solid #f9e7eb;
+            }
+            #mainNav li:last-child {
+                border-bottom: none;
+            }
+            .header-top {
+                position: relative;
+            }
+        }
     </style>
 </head>
 <body>
@@ -163,6 +214,9 @@
 
     <header>
         <div class="header-top">
+            <button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+</button>
             <a href="#" class="logo">NUVIA <span>Belleza que te inspira, estilo que te define</span></a>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar productos...">
@@ -176,7 +230,7 @@
         </div>
     </header>
 
-    <nav>
+    <nav id=mainNav>
         <ul>
             <li><a href="#">INICIO</a></li>
             <li><a href="#">ÉSIKA</a></li>
@@ -386,6 +440,25 @@
                 btn.style.background = '';
                 btn.style.color = '';
             }, 1500);
+        });
+    });
+</script>
+    <!-- === FUNCIONALIDAD MENÚ HAMBURGUESA === -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        mainNav.classList.toggle('active');
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
         });
     });
 </script>
