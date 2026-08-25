@@ -27,6 +27,7 @@
         nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 15px; }
         nav a:hover { color: var(--rosa-intenso); }
 
+        /* BANNER CON LA CHICA */
         .banner { background: linear-gradient(90deg, #FDE2E4 0%, #FEE9EB 100%); padding: 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative; border-radius: 12px; margin: 20px 5%; overflow: hidden; min-height: 420px; }
         .banner-text { flex: 1; min-width: 320px; padding: 50px 40px; z-index: 2; }
         .banner-text .bienvenida { font-size: 16px; color: #B04564; margin-bottom: 10px; letter-spacing: 2px; }
@@ -34,19 +35,28 @@
         .banner-text .subtitulo { font-size: 22px; font-style: italic; color: #94485E; margin-bottom: 10px; }
         .banner-text p { font-size: 15px; color: #666; margin-bottom: 30px; }
         .btn { background: var(--rosa-intenso); color: white; padding: 12px 32px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block; border: none; cursor: pointer; font-size: 15px; }
-        .banner-img { flex: 1; min-width: 350px; height: 420px; background: url('https://images.unsplash.com/photo-1595425959677-99c57e8e5e4c?w=600&h=420&fit=crop') center center / cover no-repeat; }
+        .banner-img { flex: 1; min-width: 350px; height: 420px; 
+            background: url('https://images.unsplash.com/photo-1595425959677-99c57e8e5e4c?w=600&h=420&fit=crop') center center / cover no-repeat; }
         .banner-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 3; }
         .arrow-left { left: 20px; }
         .arrow-right { right: 20px; }
         .oferta-box { position: absolute; top: 30px; right: 30px; background: white; padding: 15px 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         .oferta-box p { font-size: 14px; color: #666; }
 
+        /* CATEGORÍAS: ÉSIKA con perfume + ROPA con chica */
         .categorias { padding: 0 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 30px 0; }
         .cat-card { border-radius: 12px; padding: 30px; height: 320px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
         .esika { background: linear-gradient(90deg, #FDE2E4, #FEE9EB); }
         .ropa { background: linear-gradient(90deg, #F3E5FF, #FDF2F8); }
-        .esika .cat-bg { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); width: 200px; height: 260px; background: url('https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300&h=400&fit=crop') center/contain no-repeat; }
-        .ropa .cat-bg { position: absolute; right: 0; top: 0; width: 280px; height: 320px; background: url('https://images.unsplash.com/photo-1593085507499-1960f503cd32?w=350&h=320&fit=crop') right center / cover no-repeat; }
+        
+        /* IMAGEN DE ÉSIKA: PERFUME */
+        .esika .cat-bg { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); width: 200px; height: 260px; 
+            background: url('https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300&h=400&fit=crop') center/contain no-repeat; }
+        
+        /* IMAGEN DE ROPA: CHICA CON ROPA */
+        .ropa .cat-bg { position: absolute; right: 0; top: 0; width: 280px; height: 320px; 
+            background: url('https://images.unsplash.com/photo-1593085507499-1960f503cd32?w=350&h=320&fit=crop') right center / cover no-repeat; }
+        
         .cat-content { position: relative; z-index: 2; max-width: 240px; }
         .cat-card h3 { font-size: 34px; margin-bottom: 10px; font-weight: 600; }
         .esika h3 { color: #942F52; }
@@ -124,6 +134,7 @@
         </ul>
     </nav>
 
+    <!-- BANNER CON LA CHICA -->
     <section class="banner">
         <button class="banner-arrow arrow-left">‹</button>
         <div class="banner-text">
@@ -140,6 +151,7 @@
         </div>
     </section>
 
+    <!-- CATEGORÍAS: ÉSIKA con perfume + ROPA con chica -->
     <section class="categorias">
         <div class="cat-card esika">
             <div class="cat-bg"></div>
@@ -174,7 +186,7 @@
         </div>
         <div class="prod-grid">
             <div class="prod-card">
-                <div class="prod-img"><img src="https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300&h=300&fit=crop" alt="Perfume"></div>
+                <div class="prod-img"><img src="https://images.unsplash.com/photo-1585123334904-8222b5e433f9?w=300&h=300&fit=crop" alt="Perfume Ésika"></div>
                 <h4 class="prod-name">Vibranza Eau de Parfum - Ésika</h4>
                 <p class="prod-price">S/ 89.90</p>
                 <button class="add-cart">🛒</button>
